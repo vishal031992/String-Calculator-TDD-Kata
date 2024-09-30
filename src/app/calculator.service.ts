@@ -12,6 +12,6 @@ export class CalculatorService {
     if (!numbers) {
       return 0;
     }
-    return
+    return parseInt(numbers, 10);
   }
 }

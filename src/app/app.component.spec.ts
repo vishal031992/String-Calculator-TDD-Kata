@@ -35,5 +35,8 @@ describe('AppComponent', () => {
     it('should return 0 for an empty string', () => {
       expect(calc_service.add('')).toEqual(0);
     });
+    it('should return the number in case of single value', () => {
+      expect(calc_service.add('1')).toEqual(1);
+    });
   });
 });
