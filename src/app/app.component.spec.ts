@@ -62,4 +62,15 @@ describe('AppComponent', () => {
     });
   })
 
+  // handles negative numbers 
+  describe('Handling negative numbers', () => {
+    it('should throw an exception for negative numbers', () => {
+      expect(() => calc_service.add('1,-2')).toThrowError('Negative numbers not allowed: -2');
+    });
+
+    it('should throw an exception with all negative numbers listed', () => {
+      expect(() => calc_service.add('1,-2,-3')).toThrowError('Negative numbers not allowed: -2, -3');
+    });
+  });
+
 });

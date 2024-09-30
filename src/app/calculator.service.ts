@@ -46,6 +46,26 @@ export class CalculatorService {
   // }
 
   // handles the custom delimiters
+  // add(numbers: string): number {
+  //   if (!numbers) {
+  //     return 0;
+  //   }
+
+  //   const delimiterPattern = /\/\/(.+)\n/;
+  //   let delimiter = /[,\n]/;
+
+  //   const customDelimiterMatch = numbers.match(delimiterPattern);
+  //   if (customDelimiterMatch) {
+  //     delimiter = new RegExp(customDelimiterMatch[1]);
+  //     numbers = numbers.split('\n')[1];
+  //   }
+
+  //   const numArray = numbers.split(delimiter).map(num => parseInt(num, 10));
+  //   return numArray.reduce((sum, num) => sum + num, 0);
+  // }
+
+  // handles  negatives numbers 
+
   add(numbers: string): number {
     if (!numbers) {
       return 0;
@@ -61,6 +81,13 @@ export class CalculatorService {
     }
 
     const numArray = numbers.split(delimiter).map(num => parseInt(num, 10));
+
+    const negatives = numArray.filter(num => num < 0);
+    if (negatives.length > 0) {
+      throw new Error(`Negative numbers not allowed: ${negatives.join(', ')}`);
+    }
+
     return numArray.reduce((sum, num) => sum + num, 0);
   }
+
 }
