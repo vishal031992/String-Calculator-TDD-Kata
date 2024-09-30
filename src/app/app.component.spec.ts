@@ -17,17 +17,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'StringCalculatorTDDKata' title`, () => {
+  it(`should have the 'String Calculator' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('StringCalculatorTDDKata');
+    expect(app.title).toEqual('String Calculator');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('StringCalculatorTDDKata');
+    expect(compiled.querySelector('h1')?.textContent).toContain('String Calculator');
   });
 
   // First case return 0 if string is empty
@@ -49,20 +49,20 @@ describe('AppComponent', () => {
       expect(calc_service.add('1,2,3,4')).toEqual(10);
     });
   });
-  // handles delimiters
+  // Handles delimiters
   describe('Handling delimiters', () => {
     it('should handle new lines between numbers', () => {
       expect(calc_service.add('1\n2,3')).toEqual(6);
     });
   })
-  // hables the custom delimiters
+  // Hangles the custom delimiters
   describe('Handling delimiters', () => {
     it('should handle custom delimiters', () => {
       expect(calc_service.add('//;\n1;2')).toEqual(3);
     });
   })
 
-  // handles negative numbers 
+  // Hangles negative numbers 
   describe('Handling negative numbers', () => {
     it('should throw an exception for negative numbers', () => {
       expect(() => calc_service.add('1,-2')).toThrowError('Negative numbers not allowed: -2');
