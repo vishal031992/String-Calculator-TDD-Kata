@@ -55,5 +55,11 @@ describe('AppComponent', () => {
       expect(calc_service.add('1\n2,3')).toEqual(6);
     });
   })
+  // hables the custom delimiters
+  describe('Handling delimiters', () => {
+    it('should handle custom delimiters', () => {
+      expect(calc_service.add('//;\n1;2')).toEqual(3);
+    });
+  })
 
 });

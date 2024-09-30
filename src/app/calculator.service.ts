@@ -35,12 +35,31 @@ export class CalculatorService {
   // }
 
   // handles Newline as a Delimiter
+  // add(numbers: string): number {
+  //   if (!numbers) {
+  //     return 0;
+  //   }
+
+  //   const delimiter = /[,\n]/;
+  //   const numArray = numbers.split(delimiter).map(num => parseInt(num, 10));
+  //   return numArray.reduce((sum, num) => sum + num, 0);
+  // }
+
+  // handles the custom delimiters
   add(numbers: string): number {
     if (!numbers) {
       return 0;
     }
 
-    const delimiter = /[,\n]/;
+    const delimiterPattern = /\/\/(.+)\n/;
+    let delimiter = /[,\n]/;
+
+    const customDelimiterMatch = numbers.match(delimiterPattern);
+    if (customDelimiterMatch) {
+      delimiter = new RegExp(customDelimiterMatch[1]);
+      numbers = numbers.split('\n')[1];
+    }
+
     const numArray = numbers.split(delimiter).map(num => parseInt(num, 10));
     return numArray.reduce((sum, num) => sum + num, 0);
   }
