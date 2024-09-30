@@ -49,4 +49,11 @@ describe('AppComponent', () => {
       expect(calc_service.add('1,2,3,4')).toEqual(10);
     });
   });
+  // handles delimiters
+  describe('Handling delimiters', () => {
+    it('should handle new lines between numbers', () => {
+      expect(calc_service.add('1\n2,3')).toEqual(6);
+    });
+  })
+
 });
