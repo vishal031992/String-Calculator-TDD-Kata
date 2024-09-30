@@ -39,4 +39,14 @@ describe('AppComponent', () => {
       expect(calc_service.add('1')).toEqual(1);
     });
   });
+  // Handles the multiple values
+  describe('Handling multiple numbers', () => {
+    it('should return the sum of two numbers', () => {
+      expect(calc_service.add('1,5')).toEqual(6);
+    });
+
+    it('should handle an any amount of numbers', () => {
+      expect(calc_service.add('1,2,3,4')).toEqual(10);
+    });
+  });
 });

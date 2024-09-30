@@ -7,11 +7,30 @@ export class CalculatorService {
 
   constructor() { }
 
-  // add function to return zero if string is empty
-  add(numbers: string) {
+  // // add function to return zero if string is empty
+  // add(numbers: string) {
+  //   if (!numbers) {
+  //     return 0;
+  //   }
+  //   return parseInt(numbers, 10);
+  // }
+
+  //  handles the two values and return the sum 
+  // add(numbers: string) {
+  //   if (!numbers) {
+  //     return 0;
+  //   }
+  //   const numArray = numbers.split(',').map(num => parseInt(num, 10));
+  //   return numArray.reduce((sum, num) => sum + num, 0);
+  // }
+
+  // handles multiples numbers 
+  add(numbers: string): number {
     if (!numbers) {
       return 0;
     }
-    return parseInt(numbers, 10);
+
+    const numArray = numbers.split(',').map(num => parseInt(num, 10));
+    return numArray.reduce((sum, num) => sum + num, 0);
   }
 }
